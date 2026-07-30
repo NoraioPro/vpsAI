@@ -1,0 +1,87 @@
+/* Settings view */
+
+.settings { display: grid; grid-template-columns: 200px 1fr; height: 100%; min-height: 0; }
+
+.settings-nav { border-right: 1px solid var(--line); background: var(--bg-1); padding: 20px 0 16px; display: flex; flex-direction: column; }
+.settings-nav-item {
+  position: relative;
+  display: flex; align-items: center; gap: 10px; width: 100%;
+  padding: 8px 16px;
+  background: transparent; border: 0;
+  color: var(--text-2); font: inherit; font-size: 13px; font-weight: 500;
+  cursor: pointer; text-align: left;
+  transition: background .1s, color .1s;
+}
+.settings-nav-item:hover { background: var(--bg-2); color: var(--text-0); }
+.settings-nav-item.active { background: var(--bg-2); color: var(--text-0); }
+.settings-nav-item.active > svg { color: var(--accent); }
+
+.settings-body { overflow-y: auto; background: var(--bg-0); }
+.settings-pane { max-width: 760px; padding: 28px 32px 48px; }
+
+.settings-pane-head { margin-bottom: 28px; }
+.settings-pane-head h2 { font-size: 22px; color: var(--text-0); letter-spacing: -0.01em; margin-bottom: 6px; }
+.settings-pane-sub { font-size: 13px; color: var(--text-2); line-height: 1.5; }
+
+.settings-section { margin-top: 28px; }
+
+.settings-card { background: var(--bg-1); border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; }
+
+.settings-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; }
+
+.border-b { border-bottom: 1px solid var(--line); }
+
+.model-row { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+.model-row:last-child { border-bottom: 0; }
+.model-row-left { display: flex; align-items: center; gap: 10px; min-width: 164px; flex: none; }
+.model-row-name { font-size: 13px; color: var(--text-0); font-weight: 500; }
+.model-row-role { font-size: 10.5px; color: var(--text-2); margin-top: 1px; }
+.model-row-right { flex: 1; min-width: 0; }
+.model-picker { display: flex; flex-wrap: wrap; gap: 4px; }
+
+.model-option {
+  display: inline-flex; align-items: center; gap: 5px;
+  height: 22px; padding: 0 8px;
+  background: var(--bg-2); border: 1px solid var(--line); border-radius: 3px;
+  color: var(--text-2); font: inherit; font-size: 10.5px;
+  cursor: pointer; transition: background .1s, color .1s, border-color .1s;
+  white-space: nowrap;
+}
+.model-option:hover { color: var(--text-0); border-color: var(--line-2); }
+.model-option.active {
+  background: color-mix(in oklab, var(--accent) 12%, var(--bg-2));
+  border-color: color-mix(in oklab, var(--accent) 35%, transparent);
+  color: var(--accent);
+}
+
+.model-dot { width: 5px; height: 5px; border-radius: 50%; flex: none; }
+.model-dot.local { background: var(--ok); }
+.model-dot.cloud { background: var(--info); }
+
+.model-info-row { display: flex; align-items: center; gap: 12px; padding: 12px 16px; }
+
+.intg-row { display: flex; align-items: center; gap: 12px; padding: 12px 16px; }
+.intg-icon {
+  width: 32px; height: 32px; border-radius: var(--radius);
+  background: var(--bg-2); border: 1px solid var(--line-2);
+  display: grid; place-items: center; color: var(--accent); flex: none;
+}
+
+.infra-stat { padding: 12px 16px; background: var(--bg-1); }
+.infra-stat-val { font-family: var(--font-display); font-size: 22px; font-weight: 500; color: var(--text-0); letter-spacing: -0.01em; line-height: 1; margin: 6px 0 6px; }
+.infra-bar { height: 3px; background: var(--bg-3); border-radius: 2px; overflow: hidden; }
+.infra-bar-fill { height: 100%; border-radius: 2px; }
+
+.container-row { display: flex; align-items: center; gap: 10px; padding: 9px 16px; }
+.container-meta { display: flex; gap: 12px; align-items: center; flex-shrink: 0; }
+
+.infra-security-row { display: flex; align-items: center; gap: 12px; padding: 12px 16px; }
+
+.team-row { display: flex; align-items: center; gap: 12px; padding: 12px 16px; }
+.team-avatar {
+  width: 32px; height: 32px; border-radius: 6px;
+  background: color-mix(in oklab, var(--accent) 18%, var(--bg-2));
+  color: var(--accent); border: 1px solid color-mix(in oklab, var(--accent) 30%, transparent);
+  display: grid; place-items: center;
+  font-family: var(--font-mono); font-size: 12px; font-weight: 600; flex: none;
+}

@@ -1,0 +1,196 @@
+/* Hermes AI Workspace — design system
+   Aesthetic: serious enterprise, Scandinavian restraint, subtle classical motif.
+   Palette: deep navy/slate base, parchment light mode, copper/gold "Hermes" accent,
+   terminal-green for agent activity, amber for pending approvals, red for alerts.
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+:root {
+  /* Base surfaces — dark enterprise */
+  --bg-0: #0B0F14;           /* app background */
+  --bg-1: #0F141B;           /* panel */
+  --bg-2: #151B24;           /* raised card */
+  --bg-3: #1C242F;           /* hover / input */
+  --bg-4: #232C39;           /* border-heavy */
+
+  --line: #1F2733;           /* hairline */
+  --line-2: #2A3342;         /* stronger divider */
+
+  --text-0: #F5F1E8;         /* parchment — headings */
+  --text-1: #D8D2C2;         /* body */
+  --text-2: #8C93A0;         /* muted */
+  --text-3: #5A6372;         /* very muted */
+
+  /* Hermes accent — aged copper / gold leaf */
+  --accent: #C89B5C;
+  --accent-soft: #C89B5C20;
+  --accent-strong: #E0B578;
+  --accent-ink: #1A1209;
+
+  /* Signal colors */
+  --ok: #5FB286;
+  --ok-soft: #5FB28620;
+  --warn: #D4A656;
+  --warn-soft: #D4A65620;
+  --err: #C86B5C;
+  --err-soft: #C86B5C20;
+  --info: #7A9CC9;
+  --info-soft: #7A9CC920;
+
+  /* Agent-specific hues */
+  --agent-marketing: #C89B5C;
+  --agent-sales:     #7A9CC9;
+  --agent-content:   #9B8BC4;
+  --agent-research:  #6FA8A1;
+  --agent-accounting:#B58A6F;
+  --agent-ads:       #C4826F;
+  --agent-support:   #8BA77E;
+
+  /* Typography */
+  --font-display: 'Newsreader', 'Iowan Old Style', Georgia, serif;
+  --font-sans: 'IBM Plex Sans', -apple-system, system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+
+  /* Scale */
+  --radius-sm: 4px;
+  --radius: 6px;
+  --radius-lg: 10px;
+
+  --shadow-1: 0 1px 0 0 rgba(255,255,255,.03) inset, 0 1px 2px rgba(0,0,0,.4);
+  --shadow-2: 0 1px 0 0 rgba(255,255,255,.04) inset, 0 8px 24px rgba(0,0,0,.35);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg-0);
+  color: var(--text-1);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(ellipse at 20% 0%, rgba(200,155,92,.04), transparent 50%),
+    radial-gradient(ellipse at 90% 100%, rgba(122,156,201,.03), transparent 50%);
+  z-index: 0;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  color: var(--text-0);
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.mono { font-family: var(--font-mono); font-feature-settings: "ss01", "ss02"; }
+.serif { font-family: var(--font-display); }
+.muted { color: var(--text-2); }
+.dim { color: var(--text-3); }
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-2);
+}
+
+.divider { height: 1px; background: var(--line); border: 0; }
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--bg-4); border-radius: 10px; border: 2px solid var(--bg-0); }
+::-webkit-scrollbar-thumb:hover { background: var(--line-2); }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 28px;
+  padding: 0 12px;
+  background: var(--bg-2);
+  border: 1px solid var(--line-2);
+  border-radius: var(--radius);
+  color: var(--text-1);
+  font-family: var(--font-sans);
+  font-size: 12.5px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background .12s, border-color .12s, color .12s;
+  white-space: nowrap;
+}
+.btn:hover { background: var(--bg-3); border-color: var(--bg-4); color: var(--text-0); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.btn.primary:hover { background: var(--accent-strong); border-color: var(--accent-strong); }
+.btn.ghost { background: transparent; border-color: transparent; color: var(--text-2); }
+.btn.ghost:hover { background: var(--bg-2); color: var(--text-0); }
+.btn.sm { height: 24px; padding: 0 8px; font-size: 11.5px; }
+.btn.lg { height: 34px; padding: 0 16px; font-size: 13.5px; }
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  height: 20px;
+  padding: 0 7px;
+  border-radius: 3px;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--text-2);
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+}
+.tag.ok { color: var(--ok); background: var(--ok-soft); border-color: transparent; }
+.tag.warn { color: var(--warn); background: var(--warn-soft); border-color: transparent; }
+.tag.err { color: var(--err); background: var(--err-soft); border-color: transparent; }
+.tag.info { color: var(--info); background: var(--info-soft); border-color: transparent; }
+.tag.accent { color: var(--accent); background: var(--accent-soft); border-color: transparent; }
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--text-3);
+  flex: none;
+}
+.dot.ok { background: var(--ok); box-shadow: 0 0 0 3px var(--ok-soft); }
+.dot.warn { background: var(--warn); box-shadow: 0 0 0 3px var(--warn-soft); }
+.dot.err { background: var(--err); }
+.dot.info { background: var(--info); }
+.dot.pulse { animation: pulse 1.8s ease-in-out infinite; }
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 var(--ok-soft); }
+  50% { box-shadow: 0 0 0 6px transparent; }
+}
+
+.card {
+  background: var(--bg-1);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+* { -webkit-tap-highlight-color: transparent; }
+
+.num { font-variant-numeric: tabular-nums; font-feature-settings: "tnum"; }
